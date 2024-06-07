@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './App.css';
 import {Button, ChakraProvider, Container, Flex, Heading, Input} from '@chakra-ui/react'
 import TaskList from "./TaskList";
@@ -6,13 +6,25 @@ import { v4 as uuidv4 } from 'uuid';
 
 
 function App() {
-  const [tasks, setTasks] = useState([
-    { id: uuidv4(), text: 'Grocery', completed: false },
-    { id: uuidv4(), text: 'Walking outside', completed: false },
-    { id: uuidv4(), text: 'Some work', completed: false }
-  ]);
+  const [tasks, setTasks] = useState(() => {
+    const savedTasks = localStorage.getItem('tasks');
+    const parsedTasks = JSON.parse(savedTasks);
+      if (parsedTasks.length > 0) {
+        return parsedTasks;
+      }
+    return [
+      { id: uuidv4(), text: 'Grocery', completed: false },
+      { id: uuidv4(), text: 'Walking outside', completed: false },
+      { id: uuidv4(), text: 'Some work', completed: false }
+    ];
+  });
   const [newTaskText, setNewTaskText] = useState('');
   const [editingTaskId, setEditingTaskId] = useState(null);
+
+
+  useEffect(() => {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }, [tasks]);
 
   const handleKeyDown = (event) => {
     if (event.key === 'Enter')  handleAddTask();
@@ -37,7 +49,11 @@ function App() {
   }
 
   const handleDeleteTask = (taskId) => {
-    setTasks(prevTasks => prevTasks.filter(task => task.id !== taskId));
+    setTasks(prevTasks => {
+      const newTasks = prevTasks.filter(task => task.id !== taskId);
+      localStorage.setItem('tasks', JSON.stringify(newTasks));
+      return newTasks;
+    });
   };
 
   const handleToggle = (taskId) => {
