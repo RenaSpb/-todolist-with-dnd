@@ -37,7 +37,7 @@ const TaskList = ({tasks, setTasks, onDeleteClick, handleToggle, handleEdit}) =>
                         />
                     ))
                 ) : (
-                    <Text color="gray.500">No tasks yet. Add one above!</Text>
+                    <Text color="gray.500">No tasks yet. Add one above! :) </Text>
                 )}
             </VStack>
         </DndProvider>
