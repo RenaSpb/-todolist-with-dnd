@@ -1,8 +1,9 @@
-.App {
-  text-align: center;
 
+.task-item {
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
-
 
 
 .editing {
@@ -12,5 +13,5 @@
 }
 
 html, body, #root {
-  background-color: #f5f1f1; /* Новый цвет фона */
+  background-color: #f5f1f1;
 }

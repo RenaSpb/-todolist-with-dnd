@@ -55,7 +55,7 @@ function App() {
 
   return (
   <ChakraProvider>
-    <Container  maxW='md'>
+    <Container  maxW='md' className="App">
 
       <Heading mb={4}
                color={'slategray'}

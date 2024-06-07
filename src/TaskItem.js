@@ -34,10 +34,10 @@ const TaskItem = ({ task, index, onDeleteClick, handleToggle, handleEdit, moveTa
         <Box
             ref={(node) => drag(drop(node))}
             opacity={isDragging ? 0.5 : 1}
-            style={{cursor: "move"}}
+            style={{cursor: "move", width: '100%'}}
             display='flex'
         >
-        <Flex align="center">
+        <Flex align="center" justify="space-between" width="100%" className="task-item">
             <Checkbox
                 isChecked={task.completed}
                 onChange={() => handleToggle(task.id)}
