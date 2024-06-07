@@ -20,7 +20,8 @@ function App() {
     return [
       { id: uuidv4(), text: 'Grocery', completed: false },
       { id: uuidv4(), text: 'Walking outside', completed: false },
-      { id: uuidv4(), text: 'Some work', completed: false }
+      { id: uuidv4(), text: 'Some work', completed: false },
+      { id: uuidv4(), text: 'Movie', completed: false }
     ];
   });
 
