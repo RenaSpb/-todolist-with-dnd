@@ -68,7 +68,9 @@ function App() {
   const handleEdit = (taskId) => {
     setEditingTaskId(taskId);
     const taskToEdit = tasks.find(task => task.id === taskId);
-    setNewTaskText(taskToEdit.text);
+    if (taskToEdit) {
+      setNewTaskText(taskToEdit.text);
+    }
   };
 
   return (
