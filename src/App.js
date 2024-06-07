@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 
 function App() {
-  const [tasks, setTasks] = useState(() => {
+  const [tasks, setTasks] = useState( []/*() => {
     const savedTasks = localStorage.getItem('tasks');
     const parsedTasks = JSON.parse(savedTasks);
       if (parsedTasks.length > 0) {
@@ -17,15 +17,15 @@ function App() {
       { id: uuidv4(), text: 'Walking outside', completed: false },
       { id: uuidv4(), text: 'Some work', completed: false }
     ];
-  });
+  }*/);
   const [newTaskText, setNewTaskText] = useState('');
   const [editingTaskId, setEditingTaskId] = useState(null);
 
 
-  useEffect(() => {
+  /*useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }, [tasks]);
-
+*/
   const handleKeyDown = (event) => {
     if (event.key === 'Enter')  handleAddTask();
   }
